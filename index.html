@@ -4,158 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Swastik Enterprise</title>
+
+<!-- Razorpay -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <style>
+/* Basic CSS for all sections */
 body {
   margin: 0;
   font-family: "Poppins", Arial, sans-serif;
-  background-color: #e0f7ff; /* Baby blue background */
+  background-color: #e0f7ff;
   color: #0a1128;
   scroll-behavior: smooth;
 }
-
-/* Header & tagline */
 header {
-  background-color: #1a3f5a; /* Darker baby blue */
-  color: #ffffff;
+  background-color: #1a3f5a;
+  color: white;
   text-align: center;
-  padding: 25px 0;
+  padding: 25px;
   font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
 }
-
-/* Tagline below header */
 .tagline {
-  background-color: #14507b; /* Darker blue for contrast */
-  font-size: 1rem;
-  color: #ffffff;
+  background-color: #14507b;
+  color: white;
   text-align: center;
-  padding: 8px 0;
-  margin: 0;
+  padding: 8px;
 }
-
-/* Navigation */
 nav {
-  background: #ffffff;
+  background: #fff;
   display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 20px;
   padding: 14px;
-  border-bottom: 2px solid #1a3f5a;
 }
-
 nav a {
-  color: #0a1128;
   text-decoration: none;
+  color: #0a1128;
   font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
   transition: 0.3s;
 }
-
 nav a:hover {
-  color: #ffffff;
-  background-color: #1a3f5a;
-  padding: 8px 12px;
-  border-radius: 8px;
+  background: #1a3f5a;
+  color: white;
 }
-
-/* Section styles */
-section {
+section.card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  margin: 20px auto;
   max-width: 900px;
-  margin: 40px auto;
-  padding: 40px 25px;
   text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease;
 }
-
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-h2 {
-  color: #1a3f5a;
-  margin-bottom: 15px;
-}
-
-/* Card styling */
-.card {
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 25px;
-  margin: 20px auto;
-  max-width: 800px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-/* Images */
-.images {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.images img {
-  width: 250px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
-
-/* Contact info */
-.contact-info {
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-top: 15px;
-  text-align: center;
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  background-color: #1c3d5a;
-  color: white;
-  border-radius: 30px;
-  text-decoration: none;
-  margin-top: 15px;
-  transition: 0.3s;
-  font-weight: 500;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-}
-
-.btn:hover {
-  background-color: #14406a;
-}
-
-/* Map */
-iframe {
-  border: 0;
-  border-radius: 12px;
-  width: 100%;
-  height: 350px;
-}
-
-/* Footer */
-footer {
-  background: #1a3f5a;
-  color: #ffffff;
-  text-align: center;
-  padding: 18px;
-  font-size: 0.9rem;
-  margin-top: 40px;
-  border-top: 1px solid #14406a;
-}
+section.visible { opacity: 1; transform: translateY(0); }
+.images { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.images .card { padding: 15px; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+.images img { width: 200px; border-radius: 12px; }
+.btn { padding: 10px 20px; background: #1c3d5a; color:white; border:none; border-radius:20px; margin:5px; cursor:pointer; transition:0.3s; }
+.btn:hover { background:#14406a; }
+footer { background:#1a3f5a; color:white; text-align:center; padding:18px; margin-top:40px; }
+iframe { width: 100%; height: 350px; border:0; border-radius:12px; }
 </style>
 </head>
 <body>
@@ -164,68 +77,165 @@ footer {
 <div class="tagline">All India Trading • Electronics • Consumer Goods • Import–Export</div>
 
 <nav>
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#contact">Contact</a>
-  <a href="#location">Location</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#products">Products</a>
+<a href="#contact">Contact</a>
+<a href="#location">Location</a>
+<a href="#orderSuccess">Order Success</a>
+<a href="#adminPanel">Admin</a>
 </nav>
 
+<!-- About Section -->
 <section id="about" class="card">
-  <h2>About Us</h2>
-  <p>Swastik Enterprise is a Pan-India trading company providing high-quality business solutions and distribution services. We believe in integrity, trust, and long-term partnerships that drive sustainable growth.</p>
-  <p>Our operations cover <b>Wholesale and Retail trading, Sell–Purchase of all types of Electronics and Consumer Products</b>, along with <b>Import–Export services</b> across multiple sectors. We ensure top-quality sourcing, transparent business practices, and reliable nationwide delivery to meet every client’s commercial requirement with excellence.</p>
-  <p><b>Owner:</b> Jai Rajak</p>
-  <div class="images">
-    <img src="product1.jpg" alt="Product 1">
-    <img src="product2.jpg" alt="Product 2">
-  </div>
+<h2>About Us</h2>
+<p>Pan-India trading company providing high-quality business solutions.</p>
+<p><b>Owner:</b> Jai Rajak</p>
 </section>
 
+<!-- Services Section -->
 <section id="services" class="card">
-  <h2>Our Services</h2>
-  <p>
-    • Product Trading Across India <br>
-    • Wholesale and Retail Distribution <br>
-    • Electronics & Consumer Product Supply <br>
-    • Import–Export Operations <br>
-    • B2B and Industrial Solutions
-  </p>
+<h2>Services</h2>
+<p>Wholesale & Retail, Electronics & Consumer Products, Import-Export, B2B solutions</p>
 </section>
 
-<section id="contact" class="card">
-  <h2>Contact Us</h2>
-  <div class="contact-info">
-    <p><b>Team:</b> Team Swastik</p>
-    <p>📞 <b>Phone:</b> +91 9630454680 / +91 7828878085</p>
-    <p>✉️ <b>Email:</b> swastikenterpriseinfo8@gmail.com</p>
-    <p>🏢 <b>Office:</b> New Friends Colony, Bawadiya Kala, Bhopal, Madhya Pradesh - 462026</p>
+<!-- Products Section -->
+<section id="products" class="card">
+<h2>Products</h2>
+<div class="images">
+  <div class="card">
+    <img src="product1.jpg" alt="Product 1">
+    <h3>Product 1</h3>
+    <p>₹999</p>
+    <button class="btn" onclick="payNow(999,'Product 1')">Pay Online</button>
+    <button class="btn" onclick="payUPI(999,'Product 1')">UPI Pay</button>
+    <button class="btn" onclick="orderWhatsApp('Product 1',999)">WhatsApp Order</button>
   </div>
-  <a href="mailto:swastikenterpriseinfo8@gmail.com" class="btn">Get in Touch</a><br>
-  <a href="https://wa.me/919630454680?text=Hello%20Swastik%20Enterprise,%20I%20am%20interested%20in%20your%20products%20and%20would%20like%20more%20details." target="_blank" class="btn" style="margin-top:10px;">Chat on WhatsApp</a>
+  <div class="card">
+    <img src="product2.jpg" alt="Product 2">
+    <h3>Product 2</h3>
+    <p>₹1499</p>
+    <button class="btn" onclick="payNow(1499,'Product 2')">Pay Online</button>
+    <button class="btn" onclick="payUPI(1499,'Product 2')">UPI Pay</button>
+    <button class="btn" onclick="orderWhatsApp('Product 2',1499)">WhatsApp Order</button>
+  </div>
+</div>
+<h3>Scan & Pay</h3>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=7828878085-4@ybl&pn=Swastik%20Enterprise&cu=INR">
 </section>
 
+<!-- Contact Section -->
+<section id="contact" class="card">
+<h2>Contact</h2>
+<p>📞 +91 9630454680 / +91 7828878085</p>
+<p>✉️ swastikenterpriseinfo8@gmail.com</p>
+<p>🏢 New Friends Colony, Bawadiya Kala, Bhopal, MP - 462026</p>
+<a href="mailto:swastikenterpriseinfo8@gmail.com" class="btn">Email Us</a>
+</section>
+
+<!-- Location Section -->
 <section id="location" class="card">
-  <h2>Our Location</h2>
-  <iframe src="https://www.google.com/maps?q=New+Friends+Colony,+Bawadiya+Kala,+Bhopal,+Madhya+Pradesh+462026&output=embed" allowfullscreen="" loading="lazy"></iframe>
+<h2>Location</h2>
+<iframe src="https://www.google.com/maps?q=New+Friends+Colony,+Bawadiya+Kala,+Bhopal,+MP&output=embed" allowfullscreen></iframe>
 </section>
 
-<footer>
-  © 2025 Swastik Enterprise | Designed & Managed by Team Swastik
-</footer>
+<!-- Order Success Section -->
+<section id="orderSuccess" class="card">
+<h2>🎉 Payment/Order Successful!</h2>
+<p id="orderDetails">Your order will appear here after payment or WhatsApp order.</p>
+<button class="btn" onclick="downloadInvoice()">Download Invoice</button>
+</section>
+
+<!-- Admin Panel Section -->
+<section id="adminPanel" class="card">
+<h2>Admin Panel</h2>
+<div id="ordersList"><p>No orders yet.</p></div>
+</section>
+
+<footer>© 2025 Swastik Enterprise</footer>
 
 <script>
-// Fade-in animation on scroll
+// Fade-in on scroll
 document.addEventListener("DOMContentLoaded", function() {
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {threshold: 0.1});
-  sections.forEach(section => observer.observe(section));
+  document.querySelectorAll('section').forEach(sec => {
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, {threshold:0.1});
+    observer.observe(sec);
+  });
+
+  // Show order details in Order Success
+  if(document.getElementById("orderDetails")){
+    let orderID = localStorage.getItem("orderID");
+    let product = localStorage.getItem("product");
+    let amount = localStorage.getItem("amount");
+    if(orderID) document.getElementById("orderDetails").innerHTML =
+      `Order ID: ${orderID} <br> Product: ${product} <br> Amount: ₹${amount}`;
+  }
+
+  // Admin Panel Orders
+  if(document.getElementById("ordersList")){
+    let orders = JSON.parse(localStorage.getItem("allOrders")||"[]");
+    let html = orders.length ? orders.map(o=>`<p>${o.id} | ${o.product} | ₹${o.amount}</p>`).join('') : "<p>No orders yet.</p>";
+    document.getElementById("ordersList").innerHTML = html;
+  }
 });
+
+// Order & Payment Functions
+function generateOrderID(){return "ORD"+Math.floor(Math.random()*1000000);}
+
+function payNow(amount, product){
+  let orderID=generateOrderID();
+  var options = {
+    key: "YOUR_RAZORPAY_KEY",
+    amount: amount*100,
+    currency: "INR",
+    name: "Swastik Enterprise",
+    description: product,
+    handler: function(){ saveOrder(orderID,product,amount); scrollToSection('orderSuccess'); }
+  };
+  var rzp=new Razorpay(options); rzp.open();
+}
+
+function payUPI(amount, product){
+  let upi="7828878085-4@ybl";
+  let orderID=generateOrderID();
+  saveOrder(orderID,product,amount);
+  window.location.href=`upi://pay?pa=${upi}&pn=Swastik%20Enterprise&am=${amount}&cu=INR&tn=${product}`;
+}
+
+function orderWhatsApp(product,amount){
+  let orderID=generateOrderID();
+  saveOrder(orderID,product,amount);
+  let msg=`Order ID: ${orderID}%0AProduct: ${product}%0APrice: ₹${amount}`;
+  window.open(`https://wa.me/919630454680?text=${msg}`);
+  setTimeout(()=>{ scrollToSection('orderSuccess'); },2000);
+}
+
+function saveOrder(id,product,amount){
+  let orders = JSON.parse(localStorage.getItem("allOrders")||"[]");
+  orders.push({id,product,amount});
+  localStorage.setItem("allOrders",JSON.stringify(orders));
+  localStorage.setItem("orderID",id);
+  localStorage.setItem("product",product);
+  localStorage.setItem("amount",amount);
+}
+
+function downloadInvoice(){
+  let orderID=localStorage.getItem("orderID");
+  let product=localStorage.getItem("product");
+  let amount=localStorage.getItem("amount");
+  let content=`Swastik Enterprise Invoice\nOrder ID: ${orderID}\nProduct: ${product}\nAmount: ₹${amount}`;
+  let blob=new Blob([content],{type:"text/plain"});
+  let a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=`Invoice-${orderID}.txt`;
+  a.click();
+}
+
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
 </script>
 
 </body>
